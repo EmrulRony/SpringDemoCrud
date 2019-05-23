@@ -18,12 +18,18 @@ public class CustomerDaoImpl implements CustomerDao {
 	SessionFactory sessionFactory;
 
 	@Override
-	@Transactional
 	public List<Customer> listCustomers() {
 
 		Session session = sessionFactory.getCurrentSession();
 		Query<Customer> query=session.createQuery("SELECT c FROM Customer c",Customer.class);
 		return query.getResultList();
+	}
+
+	@Override
+	public void saveCustomer(Customer customer) {
+		Session session = sessionFactory.getCurrentSession();
+		session.save(customer);
+		
 	}
 
 }

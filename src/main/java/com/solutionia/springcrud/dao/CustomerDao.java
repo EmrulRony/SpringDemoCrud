@@ -7,4 +7,5 @@ import com.solutionia.springcrud.entity.Customer;
 public interface CustomerDao {
 	
 	public List<Customer> listCustomers();
+	public void saveCustomer(Customer customer);
 }

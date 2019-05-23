@@ -5,6 +5,9 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+
+<link type="text/css" rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/style.css">
 <title>customer-list</title>
 </head>
 <body>
@@ -12,12 +15,15 @@
 		<div id="header">
 			<h1>Customer Relationship Manager</h1>
 		</div>
-		${customersList}
-		${num}
 	</div>
 
 	<div id="container">
 		<div id="content">
+
+			<input type="button" value="Add Customer"
+				onclick="window.location.href='showCustomerAddForm'; return false;"
+				class="add-button" />
+				
 			<table>
 				<tr>
 					<th>First name</th>
