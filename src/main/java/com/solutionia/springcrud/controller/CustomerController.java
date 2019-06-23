@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import com.solutionia.springcrud.dao.CustomerDao;
 import com.solutionia.springcrud.entity.Customer;
 import com.solutionia.springcrud.service.CustomerService;
 
@@ -23,12 +23,9 @@ public class CustomerController {
 	
 	@RequestMapping("/list")
 	public String listCustomers(Model model) {
-		int num=10;
 		List<Customer> customers=service.getCustomers();
 		
 		model.addAttribute("customersList", customers);
-
-		model.addAttribute("num", num);
 		return "list-customers";
 	}
 	
@@ -50,5 +47,25 @@ public class CustomerController {
 		return "redirect:/customer/list";
 	}
 	
-
+	@GetMapping("/showCustomerUpdateForm")
+	public String viewCustomerUpdateForm(@RequestParam("customerId") int customerId,Model model) {
+		Customer theCustomer = service.findCustomer(customerId);
+		model.addAttribute("customer", theCustomer);
+		return "customer-form";
+	}
+	@GetMapping("/deleteCustomer")
+	public String deleteCusomer(@RequestParam("customerId") int customerId,Model model) {
+		service.deleteCustomer(customerId);
+//		List<Customer> customers = service.getCustomers();
+//		model.addAttribute("customersList", customers);
+		return "redirect:/customer/list";
+	}
+	
+	@GetMapping("/searchProcess")
+	public String searchByName(@RequestParam("theSearchName") String theSearchName,Model model) {
+		List<Customer> cusSearchList=service.searchCustomer(theSearchName);
+		model.addAttribute("customersList", cusSearchList);
+		return "list-customers";
+	}
+	
 }

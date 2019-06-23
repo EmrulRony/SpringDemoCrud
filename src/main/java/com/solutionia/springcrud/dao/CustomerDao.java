@@ -8,4 +8,7 @@ public interface CustomerDao {
 	
 	public List<Customer> listCustomers();
 	public void saveCustomer(Customer customer);
+	public Customer getCustomer(int customerId);
+	public void delCustomer(int customerId);
+	public List<Customer> searchList(String searchName);
 }

@@ -18,7 +18,7 @@ public class Customer {
 	@Column(name="first_name")
 	private String firstName;
 	@Column(name="last_name")
-	private String LastName;
+	private String lastName;
 	@Column(name="email")
 	private String email;
 	
@@ -29,7 +29,7 @@ public class Customer {
 	public Customer(String firstName, String lastName, String email) {
 		super();
 		this.firstName = firstName;
-		LastName = lastName;
+		lastName = lastName;
 		this.email = email;
 	}
 
@@ -50,11 +50,11 @@ public class Customer {
 	}
 
 	public String getLastName() {
-		return LastName;
+		return lastName;
 	}
 
 	public void setLastName(String lastName) {
-		LastName = lastName;
+		lastName = lastName;
 	}
 
 	public String getEmail() {
@@ -67,6 +67,6 @@ public class Customer {
 
 	@Override
 	public String toString() {
-		return "Customer [id=" + id + ", firstName=" + firstName + ", LastName=" + LastName + ", email=" + email + "]";
+		return "Customer [id=" + id + ", firstName=" + firstName + ", LastName=" + lastName + ", email=" + email + "]";
 	}
 }
